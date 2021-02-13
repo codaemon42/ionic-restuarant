@@ -25,18 +25,18 @@ Compatible with all woocommerce cash on delivery and bkash payment gateways for 
 
 ## Screenshots
 
-<div align="center" style="margin-bottom: 50px box-shadow: 2px 2px 10px 2px #666">
-    <img src="/fooddel1.jpg" height="100%" width="400px"</img> 
+<div align="center" style="margin-bottom: 50px;">
+    <img src="/fooddel1.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
 </div>
-<div align="center" style="margin-bottom: 50px box-shadow: 2px 2px 10px 2px #666">
-    <img src="/foooddel2.jpg" height="100%" width="400px"</img> 
+<div align="center" style="margin-bottom: 50px;">
+    <img src="/foooddel2.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
 </div>
-<div align="center" style="margin-bottom: 50px box-shadow: 2px 2px 10px 2px #666">
-    <img src="/fooddel3.jpg" height="100%" width="400px"</img> 
+<div align="center" style="margin-bottom: 50px;">
+    <img src="/fooddel3.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
 </div>
-<div align="center" style="margin-bottom: 50px box-shadow: 2px 2px 10px 2px #666">
-    <img src="/fooddel4.jpg" height="100%" width="400px"</img> 
+<div align="center" style="margin-bottom: 50px;">
+    <img src="/fooddel4.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
 </div>
-<div align="center" style="margin-bottom: 50px box-shadow: 2px 2px 10px 2px #666">
-    <img src="/fooddel5.jpg" height="100%" width="400px"</img> 
+<div align="center" style="margin-bottom: 50px;">
+    <img src="/fooddel5.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
 </div>
