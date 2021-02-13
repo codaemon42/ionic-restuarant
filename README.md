@@ -25,8 +25,18 @@ Compatible with all woocommerce cash on delivery and bkash payment gateways for 
 
 ## Screenshots
 
-![Screenshot](fooddel1.jpg) <br>
-![Screenshot](fooddel2.jpg) <br>
-![Screenshot](fooddel3.jpg) <br>
-![Screenshot](fooddel4.jpg) <br>
-![Screenshot](fooddel5.jpg)
+<div align="center">
+    <img src="/fooddel1.jpg" width="400px"</img> 
+</div>
+<div align="center">
+    <img src="/fooddel2.jpg" width="400px"</img> 
+</div>
+<div align="center">
+    <img src="/fooddel3.jpg" width="400px"</img> 
+</div>
+<div align="center">
+    <img src="/fooddel4.jpg" width="400px"</img> 
+</div>
+<div align="center">
+    <img src="/fooddel5.jpg" width="400px"</img> 
+</div>
