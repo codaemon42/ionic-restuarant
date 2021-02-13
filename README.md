@@ -27,16 +27,16 @@ Compatible with all woocommerce cash on delivery and bkash payment gateways for 
 
 <div align="center" style="margin-bottom: 50px;">
     <img src="/fooddel1.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
-</div>
+</div><br/><br/>
 <div align="center" style="margin-bottom: 50px;">
     <img src="/foooddel2.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
-</div>
+</div><br/><br/>
 <div align="center" style="margin-bottom: 50px;">
     <img src="/fooddel3.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
-</div>
+</div><br/><br/>
 <div align="center" style="margin-bottom: 50px;">
     <img src="/fooddel4.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
-</div>
+</div><br/><br/>
 <div align="center" style="margin-bottom: 50px;">
     <img src="/fooddel5.jpg" style="box-shadow: 1px 1px 7px 1px #666;" height="100%" width="400px"</img> 
-</div>
+</div><br/><br/>
