@@ -25,8 +25,8 @@ Compatible with all woocommerce cash on delivery and bkash payment gateways for 
 
 ## Screenshots
 
-![Screenshot](fooddel1.jpg)
-![Screenshot](fooddel2.jpg)
-![Screenshot](fooddel3.jpg)
-![Screenshot](fooddel4.jpg)
+![Screenshot](fooddel1.jpg) <br>
+![Screenshot](fooddel2.jpg) <br>
+![Screenshot](fooddel3.jpg) <br>
+![Screenshot](fooddel4.jpg) <br>
 ![Screenshot](fooddel5.jpg)
