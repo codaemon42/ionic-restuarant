@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar autocomplete="on" debounce="1000" animate color="tertiary" (ionChange)="onSearch($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-spinner name="lines" color="primary"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="pd-0" *ngIf="!isLoading">
+    <ion-row class="pd-0">
+  
+          <!-- <ion-item class="two-column" lines="none" *ngFor="let product of products"> -->
+            <ion-col class="ion-margin-bottom" size="6" *ngFor="let product of moreProducts" >
+              <ion-card *ngIf="product.images.length>0" routerLink="/main/tabs/home/{{product.id}}">
+                <ion-img [src]="product.images[0].src "></ion-img>
+              </ion-card>
+                  <div class="ecom-pro-size">
+                    <ion-label>
+                      <p class="ion-margin-left">{{ product.name }}</p>
+                      <p *ngIf="product.regular_price != product.price" class="ion-text-left ion-float-left mr-15 "><del>{{ product.regular_price }}</del></p>
+                      <!-- <p class="ion-text-left">{{ product.sale_price }} Tk</p> -->
+                    </ion-label>
+                    <ion-badge color="dark" class="ion-margin-left">{{ product.price }} {{currency}}</ion-badge>
+                  </div>  
+            </ion-col>
+            <ion-infinite-scroll threshold="50px" (ionInfinite)="loadMoreProducts($event)">
+              <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                loadingText="Loading more data...">
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          <!-- </ion-item> -->
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title mode="ios">{{category}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="danger" (click)="onDissmissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-spinner name="lines" color="primary"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab edge vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="onPressCartBox()" >
+      <ion-icon class="ecom-icon-for-badge-food" name="cart"></ion-icon>
+      <ion-badge class="ecom-cart-badge-food" color="danger">{{ totalCartItems }}</ion-badge>
+    </ion-fab-button>
+  </ion-fab>
+  <div #fabanime class="fabanime"></div>
+  <ion-fab edge vertical="top" horizontal="center" slot="fixed">
+    <p class="fooddel-time">
+      {{ currentTime | date: 'hh:mm:ss' }}
+    </p>
+  </ion-fab>
+  <div size="large" #button class="square"></div>
+  <!-- fooddel products -->
+  <ion-grid class="px-0" *ngIf="!isLoading">
+    <ion-row>
+      <ion-col>
+        <!-- <ion-list lines="none">
+          <ion-item class="fooddel-item-list"  *ngFor="let product of moreProducts; let i = index">
+            <ion-card>  
+              <ion-thumbnail (click)="onClickProduct(product.id)">
+                <img [src]="product.images[0].src "/>
+              </ion-thumbnail>
+            </ion-card>
+              <ion-label (click)="onClickProduct(product.id)" class="ion-padding-left ion-margin-left pdl-10">
+                <p class="ecom-font-black ion-text-left  slim-text">{{ product.name }}</p>
+                <!--ion-float-left mr-15   pt-10--->
+                <!-- <p *ngIf="product.regular_price != product.price && product.regular_price != ''" class="ion-text-left  ecom-font-blue"><del>{{ product.regular_price }}</del></p>
+                <p class="ion-text-left ecom-font-purple">{{ product.price }} {{currency}}</p>
+                <!-- <p class="ion-text-left">{{ product.sale_price }} Tk</p> -->
+
+              <!-- </ion-label>
+              <div class="fdl-carter">
+                <ion-button *ngIf="displayCounts" color="danger" class="food-carting-icons" slot="icon-only" (click)="onCartFoodItem(product, -1, i, $event)"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                  <span class="fooddelline" *ngIf="product.downloads.length == 0 && displayCounts" > 0 </span>
+                  <span class="fooddelline" *ngIf="product.downloads.length == 1 && displayCounts "> {{ product.downloads[0].qty }} </span>
+                <ion-button color="danger" class="food-carting-icons" slot="only-icon" (click)="onCartFoodItem(product, 1, i, $event)"><ion-icon name="add"></ion-icon></ion-button>
+              </div>
+            </ion-item>
+            <ion-infinite-scroll threshold="50px" (ionInfinite)="loadMoreProducts($event)">
+              <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                loadingText="Loading more products...">
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </ion-list> -->
+        <ion-card>
+          <ion-item class="fooddel-item-list ion-no-padding"  *ngFor="let product of allCat; let i = index">
+            <!-- <ion-card>  
+              <ion-thumbnail (click)="onClickProduct(product.id)">
+                <img [src]="product.images[0].src "/>
+              </ion-thumbnail>
+            </ion-card> -->
+            <ion-img [src]="product.images[0].src" (click)="onClickProduct(product.id)"></ion-img>
+              <ion-label (click)="onClickProduct(product.id)" class="ion-padding-left ion-margin-left pdl-10">
+                <p class="ecom-font-black ion-text-left  slim-text">{{ product.name }}</p>
+                <!--ion-float-left mr-15   pt-10--->
+                <p *ngIf="product.regular_price != product.price && product.regular_price != ''" class="ion-text-left  ecom-font-blue"><del>{{ product.regular_price }}</del></p>
+                <p class="ion-text-left ecom-font-purple">{{ product.price }} {{currency}}</p>
+                <!-- <p class="ion-text-left">{{ product.sale_price }} Tk</p> -->
+
+              </ion-label>
+              <div class="fdl-carter">
+                <ion-button *ngIf="displayCounts" color="danger" class="food-carting-icons" slot="icon-only" (click)="onCartFoodItem(product, -1, i, $event)"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                  <span class="fooddelline" *ngIf="product.downloads.length == 0 && displayCounts" > 0 </span>
+                  <span class="fooddelline" *ngIf="product.downloads.length == 1 && displayCounts "> {{ product.downloads[0].qty }} </span>
+                <ion-button color="danger" class="food-carting-icons" slot="only-icon" (click)="onCartFoodItem(product, 1, i, $event)"><ion-icon name="add"></ion-icon></ion-button>
+              </div>
+            </ion-item>
+            <ion-infinite-scroll threshold="50px" (ionInfinite)="loadMoreProducts($event)">
+              <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                loadingText="Loading more products...">
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

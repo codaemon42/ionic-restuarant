@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card color="light">
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="First Name" formControlName="fname" ></ion-input>
+              </ion-item>
+                  <ion-item lines="none" *ngIf="!form.get('fname').valid && form.get('fname').touched">
+                    <p class="errValid">"First Name" field can not be empty...</p>
+                  </ion-item>
+            </ion-card>
+  
+  
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="last Name" formControlName="lname" ></ion-input>
+              </ion-item>           
+                  <ion-item lines="none" *ngIf="!form.get('lname').valid && form.get('lname').touched">
+                    <p class="errValid">"Last Name" field can not be empty...</p>
+                  </ion-item>
+            </ion-card>
+  
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="Street/House address" formControlName="shaddress" ></ion-input>
+              </ion-item>
+                  <ion-item lines="none" *ngIf="!form.get('shaddress').valid && form.get('shaddress').touched">
+                    <p class="errValid">"Street/House address" field can not be empty...</p>
+                  </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="email" placeholder="Email" formControlName="email" ></ion-input>
+              </ion-item>
+                    <ion-item lines="none" *ngIf="!form.get('email').valid && form.get('email').touched">
+                      <p class="errValid">"email" field can not be empty...</p>
+                    </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="Phone Number" formControlName="pnum" ></ion-input>
+              </ion-item>
+                  <ion-item lines="none" *ngIf="!form.get('pnum').valid && form.get('pnum').touched">
+                    <p class="errValid">"Phone Number" field can not be empty...</p>
+                  </ion-item>
+            </ion-card>
+            <!-- <ion-card>
+              <ion-item>
+                <ion-input color="success" type="password" placeholder="password" formControlName="pass" ></ion-input>
+              </ion-item>
+                    <ion-item lines="none" *ngIf="!form.get('pass').valid && form.get('pass').touched">
+                      <p class="errValid">"Password" field can not be empty...</p>
+                    </ion-item>
+            </ion-card> -->
+            <ion-list>
+              <ion-radio-group>
+                <ion-list-header>
+                  <ion-label class="ion-text-center">payment Method</ion-label>
+                </ion-list-header>
+            <div *ngFor="let paymentMethod of paymentMethods">
+              <ion-item  *ngIf="paymentMethod.enabled==true">
+                <ion-label *ngIf="paymentMethod.enabled==true">{{ paymentMethod.title }}</ion-label>
+                <ion-radio *ngIf="paymentMethod.enabled==true" slot="start" value="{{ paymentMethod.title }}" (ionFocus)="onSelectPayment(paymentMethod)"></ion-radio>
+              </ion-item>
+            </div>
+              </ion-radio-group>
+ 
+            </ion-list>
+            <ion-card *ngIf="isPaymentMethodSelected && selectedPaymentMethod.id=='woo_bkash'">
+              <ion-chip color="success" class="instruction">"Send Money" the Total Amount</ion-chip>
+              <ion-chip color="success" class="instruction">Bkash {{ bkash.type }} number : {{ bkash.number }}</ion-chip>
+              <ion-input formControlName="bpn" placeholder="Bkash Phone Number"></ion-input>
+              <ion-input formControlName="bti" placeholder="Bkash TrxId"></ion-input>
+            </ion-card>
+            <ion-card>
+
+                <ion-button  class="ion-text-center" expand="block" color="success" (click)="onPlacingOrder()" *ngIf="isPaymentMethodSelected && form.valid"> Place Order </ion-button>
+
+            </ion-card>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

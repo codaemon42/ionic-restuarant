@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card color="light">
+            <!-- <ion-card>
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="First Name" formControlName="fname" ></ion-input>
+              </ion-item>
+                  <ion-item lines="none" *ngIf="!form.get('fname').valid && form.get('fname').touched">
+                    <p class="errValid">"First Name" field can not be empty...</p>
+                  </ion-item>
+            </ion-card>
+  
+  
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="last Name" formControlName="lname" ></ion-input>
+              </ion-item>           
+                  <ion-item lines="none" *ngIf="!form.get('lname').valid && form.get('lname').touched">
+                    <p class="errValid">"Last Name" field can not be empty...</p>
+                  </ion-item>
+            </ion-card>
+  
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="Username" formControlName="uname" ></ion-input>
+              </ion-item>
+                  <ion-item lines="none" *ngIf="!form.get('uname').valid && form.get('uname').touched">
+                    <p class="errValid">"Userame" field can not be empty...</p>
+                  </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="email" placeholder="Email" formControlName="email" ></ion-input>
+              </ion-item>
+                    <ion-item lines="none" *ngIf="!form.get('email').valid && form.get('email').touched">
+                      <p class="errValid">"email" field can not be empty...</p>
+                    </ion-item>
+            </ion-card> -->
+            <ion-card *ngIf="!otpSent">
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="আপনার বর্তমান ফোন নম্বর দিন" formControlName="pnum" ></ion-input>
+              </ion-item>
+                  <ion-item lines="none" *ngIf="!form.get('pnum').valid && form.get('pnum').touched">
+                    <p class="errValid">"Phone Number" field can not be empty...</p>
+                  </ion-item>
+            </ion-card>
+
+            <!-- send otp -->
+            <ion-card *ngIf="!otpSent">
+                <ion-button class="ion-text-center" expand="block" color="success" (click)="onOtpSend()" > পরবর্তী </ion-button>
+            </ion-card>
+
+            <ion-card *ngIf="otpSent">
+              <ion-item>
+                <ion-label><ion-card-subtitle> আপনার ফোন নম্বরটিতে একটি পাসওয়ার্ড প্রেরণ করা হয়েছে...</ion-card-subtitle></ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-input color="success" type="text" placeholder="আপনার ফোনে পাঠানো পাসওয়ার্ডটি লিখুন" formControlName="otp" ></ion-input>
+              </ion-item>
+                    <!-- <ion-item lines="none" *ngIf="!form.get('pass').valid && form.get('pass').touched">
+                      <p class="errValid">"Password" field can not be empty...</p>
+                    </ion-item> -->
+            </ion-card>
+            <ion-card *ngIf="otpSent">
+                <ion-button class="ion-text-center" expand="block" color="success" (click)="onRegister()" > Confirm Register </ion-button>
+            </ion-card>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

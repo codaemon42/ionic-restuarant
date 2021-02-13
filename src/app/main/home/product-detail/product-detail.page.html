@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title mode="ios">product-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab edge vertical="top" horizontal="end" slot="fixed" >
+    <ion-fab-button  color="danger" (click)="onCartModal()">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- <ion-fab *ngIf="!isLoading" vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button><ion-icon name="cart"></ion-icon></ion-fab-button>
+  </ion-fab> -->
+  <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-spinner name="lines" color="primary"></ion-spinner>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+<ion-grid *ngIf="!isLoading">
+  <ion-row>
+    <ion-col>
+      <div class="ecom-product">
+
+        <ion-card>
+          <ion-slides pager="true" [options]="slideOpts" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
+            <ion-slide *ngFor="let image of product.images">
+              <img src="{{ image.src }}"/>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+        <ion-label class="ion-padding">
+          <!--Category--------------------------start----------------------------->
+          <div *ngFor="let category of product.categories">
+            <ion-badge routerLink="/main/tabs/home/category/{{category.id}}" color="light">{{ category.name }}</ion-badge>
+          </div>
+          <!--Category------------------------------end------------------------->
+          <h2 class="ecom-pro-name">{{ product.name }}</h2>
+          <p *ngIf="product.regular_price != product.price" class="ion-text-left ion-float-left mr-15"><del>{{ product.regular_price }} {{currency}}</del></p>
+          <ion-badge *ngIf="product.regular_price != product.price" color="danger" class="ion-margin-left">{{ product.price }} {{ currency }}</ion-badge>
+        </ion-label>
+        <div class="ecom-variations">
+          <ion-button color="secondary" fill="outline" *ngFor="let variation of productVariations" (click)="onSelectVariation(variation.id)">{{ variation.attributes[0].option }}</ion-button>
+        </div>
+         <!-- && product.type == 'simple' -->
+        <div class="ecom-buttons">
+          <ion-button slot="start" color="warning" (click)="addToCart()"><ion-icon name="cart"></ion-icon>Cart</ion-button>
+          <ion-button slot="end" color="warning"><ion-icon name="cart"></ion-icon>Buy Now</ion-button>
+        </div>
+        <div class="ecom-toggler-tab">
+          <ion-button color="tertiary" (click)="onShortDescription()" expand="full">
+            <ion-icon slot="start" name="home"></ion-icon>Descriptions
+          </ion-button>
+          <div class="ecom-toggler-invisible" #slideToggler>
+            <p  [innerHTML]="product.description"></p>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

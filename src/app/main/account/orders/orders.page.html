@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/account"></ion-back-button>
+    </ion-buttons>
+    <ion-title>orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let order of orders" class="ecom-order-padding-bottom">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon class="ecom-icon-size" color="danger" name="color-filter"></ion-icon>
+                <ion-label class="ion-padding-left ecom-order-total ecom-black-font">#{{ order.id }} </ion-label>
+              </ion-col>
+              <ion-col>
+
+                    <ion-icon *ngIf="order.status == 'processing'" class="ecom-icon-size" color="success" name="radio-button-on"></ion-icon>
+                    <ion-icon *ngIf="order.status == 'on-hold'" class="ecom-icon-size" color="warning" name="radio-button-on"></ion-icon>
+                    <ion-icon *ngIf="order.status == 'failed' || order.status == 'cancelled'" class="ecom-icon-size" color="danger" name="radio-button-on"></ion-icon>
+                    <ion-icon *ngIf="order.status == 'completed'" class="ecom-icon-size" color="medium" name="radio-button-on"></ion-icon>
+                    <ion-label class="ion-padding-left ecom-order-total">{{ order.status }}</ion-label>
+
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+
+                  <ion-icon class="ecom-icon-size" color="secondary" name="call"></ion-icon>
+                  <ion-label class="ion-padding-left ecom-order-total">{{ order.billing.phone }}</ion-label>
+
+              </ion-col>
+              <ion-col>
+                <ion-icon class="ecom-icon-size" color="tertiary" name="shield"></ion-icon>
+                <ion-label class="ion-padding-left ecom-order-total">{{ order.currency_symbol }}{{ order.total }}</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-icon class="ecom-icon-size" color="success" name="calendar"></ion-icon>
+                <ion-label class="ion-padding-left  ecom-order-total">{{ order.date_created_gmt | date }}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-icon class="ecom-icon-size" color="primary" name="planet"></ion-icon>
+                <ion-label class="ion-padding-left  ecom-order-total">{{ order.payment_method_title }}</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-no-padding" *ngIf="order.payment_method_title == 'bKash'">
+              <ion-col class="ion-no-padding">
+                <h6 class="ion-no-padding ion-text-center ecom-black-font">bkash payment details</h6>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngFor="let meta of AllorderMeta" >
+   
+                <ion-col *ngIf="order.payment_method_title == 'bKash' &&  order.id == meta.id" >
+                  <ion-icon class="ecom-icon-size" color="danger" name="lock-closed"></ion-icon>
+                  <ion-label class="ion-padding-left  ecom-order-total ecom-lh">{{ meta.bkashNumber }}</ion-label>
+                </ion-col>
+                <ion-col *ngIf="order.payment_method_title == 'bKash' &&  order.id == meta.id" >
+                  <ion-icon class="ecom-icon-size" color="success" name="lock-open"></ion-icon>
+                  <ion-label class="ion-padding-left  ecom-order-total ecom-lh">{{ meta.bkashTrx }}</ion-label>
+                </ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

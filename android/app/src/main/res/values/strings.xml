@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">fooddel</string>
+    <string name="title_activity_main">fooddel</string>
+    <string name="package_name">com.woopearl.app</string>
+    <string name="custom_url_scheme">com.woopearl.app</string>
+</resources>

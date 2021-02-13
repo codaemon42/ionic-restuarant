@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card color="light">
+            <ion-card>
+              <ion-item>
+                <ion-input autofocus="true" color="success" type="text" placeholder="Username" formControlName="uname"></ion-input>
+              </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-item>
+                <ion-input color="success" type="password" placeholder="Password" formControlName="pass"></ion-input>
+              </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-button class="ion-text-center" expand="block" color="success" (click)="onLogin()">Login</ion-button>
+            </ion-card>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

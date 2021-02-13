@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="sidemenu1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title mode="ios"> Home </ion-title>
+    <!-- <ion-button fill="clear" slot="end" routerLink="/main/tabs/cart">
+      <ion-icon class="ecom-icon-for-badge" color="dark" name="cart"></ion-icon>
+      <ion-badge class="ecom-cart-badge" color="danger">{{ totalCartItems }}</ion-badge>
+    </ion-button> -->
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-fab edge vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" routerLink="/main/tabs/cart">
+      <ion-icon class="ecom-icon-for-badge-food" name="cart"></ion-icon>
+      <ion-badge class="ecom-cart-badge-food" color="danger">{{ totalCartItems }}</ion-badge>
+    </ion-fab-button>
+  </ion-fab>
+  <div #fabanime class="fabanime"></div>
+  <ion-fab edge vertical="top" horizontal="center" slot="fixed">
+    <p class="fooddel-time">
+      {{ currentTime | date: 'hh:mm:ss' }}
+    </p>
+  </ion-fab>
+<!-- <ion-button color="primary" routerLink="/main/tabs/home/product-details">Product</ion-button> -->
+
+  <ion-slides *ngIf="!isLoading" pager="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)" [options]="slideOpts">
+    <ion-slide>
+      <img src="https://thumbs.dreamstime.com/b/delivery-man-scooter-food-deliveries-courier-delivering-city-bike-route-vector-illustration-meal-logistic-service-driver-151869860.jpg"/>
+    </ion-slide>
+    <ion-slide>
+      <img src="https://static.wixstatic.com/media/86800a_6d442591baaa4a8e9bfc6dc150852c55~mv2.png/v1/fill/w_630,h_352,al_c,q_85,usm_0.66_1.00_0.01/86800a_6d442591baaa4a8e9bfc6dc150852c55~mv2.webp"/>
+    </ion-slide>
+    <ion-slide>
+      <img src="https://image.freepik.com/free-vector/delivery-express-by-parcel-delivery-person-with-scooter-truck-by-e-commerce-system-smartphone-computer-isometric-flat-design-illustration_82984-723.jpg"/>
+    </ion-slide>
+  </ion-slides>
+
+
+ 
+  <ion-grid *ngIf="!isLoading">
+    <ion-row>
+      <ion-col>
+        <ion-card class="foodel-home-cat" (click)="onSpecial('breakfast')">
+          <div class="home-icon">
+            <ion-icon src="assets/breakfast.svg"></ion-icon>
+          </div>
+          <div class="home-lab">
+            <ion-label>Breakfast</ion-label>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="foodel-home-cat" (click)="onSpecial('lunch')">
+          <div class="home-icon">
+            <ion-icon color="success" name="restaurant"></ion-icon>
+          </div>
+          <div class="home-lab">
+            <ion-label>Lunch</ion-label>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="foodel-home-cat" (click)="onSpecial('dinner')">
+          <div class="home-icon">
+            <ion-icon src="assets/dinner.svg"></ion-icon>
+          </div>
+          <div class="home-lab">
+            <ion-label>Dinner</ion-label>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="foodel-home-cat" (click)="onSpecial('biriyani')">
+          <div class="home-icon">
+            <ion-icon src="assets/healthy-eating.svg"></ion-icon>
+          </div>
+          <div class="home-lab">
+            <ion-label>Biriyani</ion-label>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="foodel-home-cat" (click)="onSpecial('cakes')">
+          <div class="home-icon">
+            <ion-icon src="assets/cake.svg"></ion-icon>
+          </div>
+          <div class="home-lab">
+            <ion-label>Cakes</ion-label>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="foodel-home-cat" (click)="onSpecial('snacks')">
+          <div class="home-icon">
+            <ion-icon color="danger" name="pizza"></ion-icon>
+          </div>
+          <div class="home-lab">
+            <ion-label>Snacks</ion-label>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div size="large" #button class="square"></div>
+  <!-- fooddel products -->
+  <ion-grid class="px-0" *ngIf="!isLoading">
+    <ion-row>
+      <ion-col>
+        <ion-list lines="none">
+          <ion-item class="fooddel-item-list"  *ngFor="let product of moreProducts; let i = index">
+            <ion-card>  
+              <ion-thumbnail routerLink="/main/tabs/home/{{product.id}}">
+                <img [src]="product.images[0].src "/>
+              </ion-thumbnail>
+            </ion-card>
+              <ion-label routerLink="/main/tabs/home/{{product.id}}" class="ion-padding-left ion-margin-left pdl-10">
+                <p class="ecom-font-black ion-text-left  slim-text">{{ product.name }}</p>
+                <!--ion-float-left mr-15   pt-10--->
+                <p *ngIf="product.regular_price != product.price && product.regular_price != ''" class="ion-text-left  ecom-font-blue"><del>{{ product.regular_price }}</del></p>
+                <p class="ion-text-left ecom-font-purple">{{ product.price }} {{currency}}</p>
+                <!-- <p class="ion-text-left">{{ product.sale_price }} Tk</p> -->
+
+              </ion-label>
+              <div class="fdl-carter">
+                <ion-button *ngIf="displayCounts" color="danger" class="food-carting-icons" slot="icon-only" (click)="onCartFoodItem(product, -1, i, $event)"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                  <span class="fooddelline" *ngIf="product.downloads.length == 0 && displayCounts" > 0 </span>
+                  <span class="fooddelline" *ngIf="product.downloads.length == 1 && displayCounts "> {{ product.downloads[0].qty }} </span>
+                <ion-button color="danger" class="food-carting-icons" slot="only-icon" (click)="onCartFoodItem(product, 1, i, $event)"><ion-icon name="add"></ion-icon></ion-button>
+              </div>
+            </ion-item>
+            <ion-infinite-scroll threshold="50px" (ionInfinite)="loadMoreProducts($event)">
+              <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                loadingText="Loading more products...">
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid *ngIf="isLoading">
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-spinner name="lines" color="primary"></ion-spinner>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<!-- <ion-grid class="pd-0" *ngIf="!isLoading">
+  <ion-row class="pd-0">
+          <ion-col class="ion-margin-bottom" size="6" *ngFor="let product of moreProducts" >
+            <ion-card *ngIf="product.images.length>0" routerLink="/main/tabs/home/{{product.id}}">
+              <ion-img [src]="product.images[0].src "></ion-img>
+            </ion-card>
+                <div class="ecom-pro-size">
+                  <ion-label>
+                    <p class="ecom-font-black ion-text-left pt-10 slim-text">{{ product.name }}</p>
+                    <p *ngIf="product.regular_price != product.price && product.regular_price != ''" class="ion-text-left ion-float-left mr-15 ecom-font-blue"><del>{{ product.regular_price }}</del></p>
+                    <p class="ion-text-left ecom-font-purple">{{ product.price }} {{currency}}</p>
+                    <
+                  </ion-label>
+                </div>  
+          </ion-col>
+          <ion-infinite-scroll threshold="50px" (ionInfinite)="loadMoreProducts($event)">
+            <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="Loading more products...">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>  
+  </ion-row>
+</ion-grid> -->
+
+</ion-content>

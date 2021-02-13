@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title mode="ios">category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6"  *ngFor="let category of categories">
+        <ion-card class="ecom-card" routerLink="/main/tabs/category/{{ category.id }}">
+
+            <ion-label class="ecom-label">
+              <h2>{{ category.name }}</h2>
+            </ion-label>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

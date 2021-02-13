@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title mode="ios">Cart</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="danger" (click)="onClosingCartModal()">
+        <ion-icon slot="icon-only" name="close" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngIf="showEmpltyMeaage">
+        <p class="mt-200 ion-text-center">
+          No cart items yet !!! 
+        </p>
+      </ion-col>
+      <ion-col *ngIf="!showEmpltyMeaage">
+        <ion-list>
+          <ion-item *ngFor="let item of cartItems; let i = index" >
+            <ion-thumbnail>
+              <img src="{{ item.product.images[0].src }}" alt="">
+            </ion-thumbnail>
+            <ion-label>
+              <h5 class="ecom-pro-qty">{{ item.product.name }}</h5>
+              <p><span class="ecom-pro-qty">{{ item.qty }}</span>&#215;{{ item.product.price }}</p>
+              <div class="ion-float-left">
+                <ion-button fill="clear" (click)="onChangeQuantity(item, i, -1)"><ion-icon slot="icon-only" color="danger" name="remove-circle"></ion-icon></ion-button>
+                  <span id="ecom-input-qty">{{ item.qty }}</span>
+                <ion-button fill="clear" (click)="onChangeQuantity(item, i, 1)"><ion-icon slot="icon-only" color="danger" name="add-circle"></ion-icon></ion-button>
+              </div>
+              <div class="ion-float-right">
+                <ion-button color="light" slot="icon-only" (click)="onRemoveItem(item, i)"><ion-icon  color="danger" name="trash"></ion-icon></ion-button>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-card>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="coupon" placeholder="Enter coupon"></ion-input>
+            <ion-button color="success" (click)="getCoupon()">Apply</ion-button>
+          </ion-item>
+        </ion-card>
+        <ion-card>
+          <ion-item >
+            <ion-label>
+              <h5 class="ion-float-left">Sub Total</h5>
+              <h5 class="ion-float-right">{{ currency }}.{{ total }}</h5>
+            </ion-label>          
+          </ion-item>
+        </ion-card> 
+        <ion-card>
+          <ion-item>
+            <ion-label>
+              <p class="ion-float-left">Delivery District</p>
+            </ion-label>       
+            <ion-select placeholder="SELECT" #district  (ionChange)="onSelectDistrict(district.value)">
+              <ion-select-option *ngFor="let shipping of shippingArray" value="{{ shipping.zoneCode }}">{{ shipping.zoneType }}</ion-select-option>
+            </ion-select>   
+          </ion-item>
+        </ion-card>
+        <ion-card *ngIf="shippingCostAvailable">
+          <ion-item lines="none">
+            <ion-label>
+              <h5 class="ion-float-left">Shipping Cost : </h5>
+              <h5 class="ion-float-right">{{ currency }}.{{ shippingCost }}</h5>
+            </ion-label>      
+          </ion-item>
+        </ion-card>
+        <ion-card *ngIf="shippingCostAvailable">
+          <ion-item lines="none">
+            <ion-label *ngIf="shippingCostAvailable">
+              <h3 class="ion-float-left">Grand Total : </h3>
+              <h3 class="ion-float-right">{{ currency }}.{{ grandTotal }}</h3>
+            </ion-label>      
+          </ion-item>
+        </ion-card>
+        <ion-button *ngIf="shippingCostAvailable" class="ion-padding ion-margin-bottom" expand="block" color="success" routerLink="/main/tabs/checkout" (click)="onClosingCartModal()" >Next</ion-button>       
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

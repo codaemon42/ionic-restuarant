@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "889551129536",
+    "project_id": "fooddel-cf9f6",
+    "storage_bucket": "fooddel-cf9f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889551129536:android:be1dbd1a88bc214a89d625",
+        "android_client_info": {
+          "package_name": "com.woopearl.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889551129536-enlcfbsj6hi9b4h4lbegv2ns5oh46k64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaa3fAf0tOXAJB-227xdeK9uupvjdNrT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889551129536-enlcfbsj6hi9b4h4lbegv2ns5oh46k64.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

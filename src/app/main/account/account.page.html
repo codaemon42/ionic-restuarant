@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-card *ngIf="!userLoggedIn">
+            <ion-item routerLink="/main/tabs/account/register">
+              <ion-label>Registration</ion-label>
+            </ion-item>
+          </ion-card>
+          <ion-card *ngIf="!userLoggedIn">
+            <ion-item  routerLink="/main/tabs/account/login">
+              <ion-label>Login</ion-label>
+            </ion-item>
+          </ion-card>
+          <ion-card *ngIf="userLoggedIn">
+            <ion-item routerLink="/main/tabs/account/orders">
+              <ion-label>Orders</ion-label>
+            </ion-item>
+          </ion-card>
+          <ion-card *ngIf="userLoggedIn" (click)="onLogOut()">
+            <ion-item routerLink="/main/tabs/account">
+              <ion-label>Log out</ion-label>
+            </ion-item>
+          </ion-card>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

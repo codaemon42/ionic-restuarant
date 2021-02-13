@@ -1,0 +1,31 @@
+.ecom-right{
+    right:0 !important;
+}
+.ecom-full-width{
+    width:100% !important;
+    #qty{
+        width:20%;
+    }
+}
+.ecom-right{
+    right:10px !important;
+}
+#ecom-input-qty{
+    margin: 0 5px;
+    line-height: 2;
+}
+.ecom-pro-qty{
+    margin-left: 15px;
+}
+ion-thumbnail{
+    margin-right:5px;
+    width:75px;
+    height:75px;
+    img{
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px #6e6d6d;
+    }
+}
+.mt-200{
+    margin-top:200px;
+}

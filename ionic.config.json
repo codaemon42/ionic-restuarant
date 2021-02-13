@@ -1,0 +1,8 @@
+{
+  "name": "Fooddel",
+
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
